@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe "StaticPages" do
 
+  subject { page }
   describe "Home page" do
+    before { visit root_path }
 
-    it "should have the title 'Home'" do
-      visit '/static_pages/home'
-      page.should have_selector('title',
-                        :text => "Xiaopihai")
-    end
+    it { should have_selector 'title',
+                        text: full_title('') }
+
   end
 
 end
