@@ -9,6 +9,7 @@
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
 #  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -19,7 +20,7 @@ class User < ActiveRecord::Base
   before_save { self.email.downcase! }  
   before_save :create_remember_token
 
-  validates :name, presence: true, length: { maximum: 16 }
+  validates :name, presence: true, length: { maximum: 50 }
   # validates :email, presence: true  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
